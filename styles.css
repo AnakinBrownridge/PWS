@@ -1,0 +1,303 @@
+:root {
+  --bg-0: #0b1020;
+  --bg-1: #101827;
+  --bg-2: #1b2437;
+  --panel: rgba(17, 23, 35, 0.76);
+  --panel-strong: rgba(11, 15, 26, 0.9);
+  --surface: rgba(255, 255, 255, 0.05);
+  --surface-strong: rgba(255, 255, 255, 0.08);
+  --border: rgba(164, 195, 255, 0.18);
+  --text: #edf6ff;
+  --text-soft: #b2bfd9;
+  --accent: #7dd3fc;
+  --accent-strong: #38bdf8;
+  --accent-warm: #f9a8d4;
+  --shadow: rgba(3, 7, 18, 0.65);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  min-height: 100%;
+  height: 100%;
+  font-family: Inter, "Segoe UI", sans-serif;
+  color: var(--text);
+  background:
+    radial-gradient(circle at top left, rgba(56, 189, 248, 0.2), transparent 30%),
+    radial-gradient(circle at top right, rgba(249, 168, 212, 0.2), transparent 22%),
+    linear-gradient(160deg, var(--bg-0), var(--bg-1) 35%, var(--bg-2));
+}
+
+body {
+  display: grid;
+  place-items: center;
+}
+
+.shell {
+  width: min(1220px, 92vw);
+  height: min(760px, 86vh);
+  border: 1px solid var(--border);
+  border-radius: 22px;
+  overflow: hidden;
+  background: rgba(8, 11, 18, 0.8);
+  box-shadow: 0 35px 80px var(--shadow);
+  backdrop-filter: blur(16px);
+}
+
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 58px;
+  padding: 0 18px;
+  background: rgba(14, 18, 28, 0.75);
+  border-bottom: 1px solid var(--border);
+}
+
+.system-group {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.brand {
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  font-size: 0.8rem;
+}
+
+.desk-name {
+  color: var(--text-soft);
+  font-size: 0.76rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.status-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 6px 12px;
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-soft);
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.status-pill.accent {
+  background: rgba(125, 211, 252, 0.12);
+  border-color: rgba(125, 211, 252, 0.35);
+  color: var(--accent);
+}
+
+.glyph {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid transparent;
+  color: var(--text-soft);
+}
+
+.desktop {
+  display: grid;
+  grid-template-columns: 86px 1fr;
+  height: calc(100% - 58px);
+}
+
+.dock {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  padding: 18px 12px;
+  background: rgba(16, 22, 34, 0.7);
+  border-right: 1px solid var(--border);
+}
+
+.dock-app {
+  width: 48px;
+  height: 48px;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  background: linear-gradient(180deg, rgba(30, 41, 59, 0.9), rgba(8, 11, 18, 0.9));
+  color: var(--text);
+  font-size: 1.1rem;
+  cursor: pointer;
+}
+
+.dock-app.active {
+  background: linear-gradient(180deg, rgba(56, 189, 248, 0.35), rgba(14, 20, 34, 1));
+  border-color: rgba(125, 211, 252, 0.6);
+  box-shadow: inset 0 0 0 1px rgba(125, 211, 252, 0.5);
+}
+
+.workspace-panel {
+  padding: 18px 18px 12px;
+  background: rgba(9, 13, 21, 0.72);
+}
+
+.workspace-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 8px 14px;
+}
+
+.eyebrow {
+  margin: 0 0 6px;
+  font-size: 0.7rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--text-soft);
+}
+
+.workspace-header h1 {
+  margin: 0;
+  font-size: clamp(1.4rem, 2vw, 2rem);
+}
+
+.workspace-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.workspace-actions button {
+  appearance: none;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.02);
+  color: var(--text);
+  padding: 8px 14px;
+  font-size: 0.72rem;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.workspace-actions .primary {
+  background: linear-gradient(135deg, rgba(125, 211, 252, 0.2), rgba(56, 189, 248, 0.4));
+  border-color: rgba(125, 211, 252, 0.55);
+}
+
+.workspace {
+  position: relative;
+  width: 100%;
+  height: calc(100% - 74px);
+  border-radius: 18px;
+  border: 1px solid var(--border);
+  overflow: hidden;
+  background:
+    radial-gradient(circle at top left, rgba(125, 211, 252, 0.2), transparent 25%),
+    linear-gradient(160deg, rgba(9, 13, 21, 0.96), rgba(17, 24, 39, 0.96));
+}
+
+.window {
+  position: absolute;
+  border-radius: 16px;
+  border: 1px solid rgba(169, 204, 255, 0.2);
+  background: rgba(14, 18, 28, 0.76);
+  box-shadow: 0 18px 28px rgba(0, 0, 0, 0.24);
+  overflow: hidden;
+  transition: left 180ms ease, top 180ms ease, width 180ms ease, height 180ms ease;
+}
+
+.window.active {
+  border-color: rgba(125, 211, 252, 0.7);
+  box-shadow: 0 24px 35px rgba(15, 78, 116, 0.36);
+}
+
+.window-titlebar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  height: 34px;
+  padding: 0 12px;
+  background: rgba(255, 255, 255, 0.04);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.window-controls {
+  display: flex;
+  gap: 7px;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.dot.red { background: #fd6b6b; }
+.dot.yellow { background: #f4d35e; }
+.dot.green { background: #7ae7ac; }
+
+.window-label {
+  font-size: 0.72rem;
+  color: var(--text-soft);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.window-body {
+  height: calc(100% - 34px);
+  padding: 14px;
+  background: linear-gradient(180deg, rgba(17, 24, 39, 0.7), rgba(10, 13, 21, 0.9));
+}
+
+.window-content {
+  display: grid;
+  gap: 10px;
+  height: 100%;
+}
+
+.window-content .row {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.window-content .box {
+  border-radius: 10px;
+  background: rgba(148, 163, 184, 0.08);
+  border: 1px solid rgba(148, 163, 184, 0.1);
+}
+
+.window-content .big {
+  height: 42%;
+}
+
+.window-content .small {
+  height: 24%;
+}
+
+.window-content .accent {
+  background: linear-gradient(180deg, rgba(125, 211, 252, 0.15), rgba(15, 23, 42, 0.35));
+  border-color: rgba(125, 211, 252, 0.3);
+}
+
+.window-content .warm {
+  background: linear-gradient(180deg, rgba(249, 168, 212, 0.12), rgba(15, 23, 42, 0.35));
+  border-color: rgba(249, 168, 212, 0.3);
+}
+
+@media (max-width: 900px) {
+  .shell {
+    width: 96vw;
+    height: 90vh;
+  }
+
+  .desktop {
+    grid-template-columns: 68px 1fr;
+  }
+}
